@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "@react-pdf/renderer";
 import { FC } from "react";
+import { globalStyles } from "../pages/styles";
 
 interface BulletListProps {
     items: string[];
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
-        alignItems: "center",
+        alignItems: "flex-start",
         marginBottom: 5,
         gap: 6
     },
@@ -25,13 +26,17 @@ const styles = StyleSheet.create({
         height: 5,
         backgroundColor: "black",
         borderRadius: "100%",
+        marginTop: 3
     },
     itemContent: {
         fontSize: 10,
+        textAlign: "justify"
     },
 });
 
-const { body, list, listItem, bullet, itemContent } = styles
+const { body, list, listItem, bullet, itemContent } = styles;
+const { lineHeight } = globalStyles;
+
 
 const BulletList: FC<BulletListProps> = ({ items }) => {
     return (
@@ -40,7 +45,7 @@ const BulletList: FC<BulletListProps> = ({ items }) => {
                 {items.map((item, index) => (
                     <View key={index} style={listItem}>
                         <Text style={bullet}></Text>
-                        <Text style={itemContent}>{item}</Text>
+                        <Text style={[itemContent, lineHeight]}>{item}</Text>
                     </View>
                 ))}
             </View>

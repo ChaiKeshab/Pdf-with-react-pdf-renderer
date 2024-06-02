@@ -8,25 +8,14 @@ import Table from '../components/Table';
 import BulletList from '../components/BulletList';
 
 const styles = StyleSheet.create({
-    page: {
-        paddingTop: 10,
-        paddingRight: 30,
-        paddingBottom: 10,
-        paddingLeft: 30,
-    },
-    h1: {
-        fontWeight: 'semibold',
-        fontSize: 16,
-        textAlign: "center"
-    },
     fontBody: {
         fontSize: 10,
     },
 });
 
-const { fontBody, h1 } = styles
+const { fontBody } = styles
 
-const { pMarginBtm } = globalStyles
+const { pMarginBtm, page, title } = globalStyles
 
 const OfferLetter: FC = () => {
 
@@ -45,11 +34,11 @@ const OfferLetter: FC = () => {
     const listItems = ["First item", "Second item", "Third item"];
 
     return (
-        <Page size="A4" style={styles.page}>
+        <Page size="A4" style={page}>
             <Header />
             {/* body */}
             <View style={fontBody}>
-                <Text style={h1}>Letter of Offer</Text>
+                <Text style={title}>Letter of Offer</Text>
 
                 <Text style={pMarginBtm}>Date: 02 April 2024</Text>
                 <Text style={pMarginBtm}>Dear XXXXXXXXX</Text>
@@ -65,7 +54,6 @@ const OfferLetter: FC = () => {
                 <Table
                     headItems={t1head}
                     bodyItems={t1body}
-                    headCss={[]}
                     colWidth={[
                         { width: "30%" },
                         { width: "14%" },
@@ -79,7 +67,6 @@ const OfferLetter: FC = () => {
                 <Table
                     headItems={t2head}
                     bodyItems={t2body}
-                    headCss={[]}
                     colWidth={[
                         { width: "30%" },
                         { width: "70%" },

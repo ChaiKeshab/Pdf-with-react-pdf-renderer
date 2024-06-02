@@ -1,6 +1,25 @@
 import { StyleSheet } from "@react-pdf/renderer";
 
 export const globalStyles = StyleSheet.create({
+    page: {
+        paddingTop: 10,
+        paddingRight: 30,
+        paddingBottom: 10,
+        paddingLeft: 30,
+    },
+    title: {
+        fontWeight: 'semibold',
+        fontSize: 16,
+        textAlign: "center",
+        marginBottom: 10
+    },
+    subTitle: {
+        fontWeight: 'semibold',
+        marginBottom: 10
+    },
+    primary: {
+        color: "#1D1A57"
+    },
     green: {
         backgroundColor: "green"
     },
@@ -30,7 +49,7 @@ export const globalStyles = StyleSheet.create({
         gap: 15
     },
     marginBottom: {
-        marginBottom: 4
+        marginBottom: 4,
     },
     spaceBetween: {
         justifyContent: "space-between",
@@ -48,6 +67,14 @@ export const globalStyles = StyleSheet.create({
         fontSize: 8
     },
     pMarginBtm: {
-        marginBottom: 10
-    }
+        marginBottom: 10,
+        lineHeight: 1.5
+    },
+    lineHeight: {
+        lineHeight: 1.5
+    },
+    center: {
+        textAlign: "center",
+        fontSize: 12
+    },
 });

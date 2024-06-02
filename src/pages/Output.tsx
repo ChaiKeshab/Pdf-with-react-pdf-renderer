@@ -4,6 +4,10 @@ import OfferLetter from './OfferLetter';
 import light from '../assets/Roboto-Light.ttf'
 import regular from '../assets/Roboto-Regular.ttf'
 import bold from '../assets/Roboto-Bold.ttf'
+import AcceptanceLetter from './AcceptanceLetter';
+import Payment from './Payment';
+import FeesAndRefund from './FeesAndRefund';
+import Refund from './Refund';
 
 Font.register({
     family: 'Roboto',
@@ -40,9 +44,10 @@ const Output: FC = () => {
         <>
             <Document style={styles.document}>
                 <OfferLetter />
-                <OfferLetter />
-                <OfferLetter />
-                {/* <AcceptanceLetter /> */}
+                <AcceptanceLetter />
+                <Payment />
+                <FeesAndRefund />
+                <Refund />
             </Document>
         </>
     );
