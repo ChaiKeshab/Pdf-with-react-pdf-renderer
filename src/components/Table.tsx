@@ -13,9 +13,9 @@ interface ExtraRow {
     css: CssStyleWithWidth[];
 }
 
-interface Table {
+interface TableProps {
     headItems?: string[];
-    bodyItems: NestedArray;
+    bodyItems?: NestedArray;
     headCss?: CssStyle[] | [];
     colWidth?: CssStyle[] | [];
     extraRowBottom?: ExtraRow[] | null
@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
 const { borderTop, borderBottom, borderLeft, borderRight, cellPad, font, table, tableCellHeader, tableRow } = styles;
 const { pMarginBtm } = globalStyles;
 
-const Table: FC<Table> = ({
+const Table: FC<TableProps> = ({
     headItems,
-    bodyItems,
+    bodyItems = [[]],
     headCss = [{ backgroundColor: "#DDDDDD" }],
     colWidth = [{ width: "50%" }, { width: "50%" }],
     extraRowBottom = null,
@@ -85,24 +85,12 @@ const Table: FC<Table> = ({
                         </View>
                     )}
 
-                    {bodyItems && (
+                    {(bodyItems || extraRowBottom || extraRowTop) && (
                         // body
                         <View>
                             {bodyItems.map((row, rowIndex) => (
                                 <View key={rowIndex}>
 
-
-                                    {/* {extraRowTop && rowIndex === 0 &&
-                                        <View key={`extraTop-${rowIndex}`} style={[tableRow, rowIndex === 0 ? borderTop : {}]} wrap={false}>
-                                            {extraRowTop.map((row, extraRowIndex) => (
-                                                row?.content.map((cell, cellIndex) => (
-                                                    <View key={`extraTop-${extraRowIndex}-${cellIndex}`} style={[cellIndex === 0 ? borderLeft : {}, borderRight, row.css[cellIndex]]}>
-                                                        <Text style={cellPad}>{cell}</Text>
-                                                    </View>
-                                                ))
-                                            ))}
-                                        </View>
-                                    } */}
                                     {extraRowTop && rowIndex === 0 &&
                                         extraRowTop.map((row, extraRowIndex) => (
                                             <View key={`extraBottom-${rowIndex}`} style={[tableRow, rowIndex === 0 ? borderTop : {}]} wrap={false}>
@@ -115,7 +103,7 @@ const Table: FC<Table> = ({
                                         ))
                                     }
 
-                                    <View key={`body-${rowIndex}`} style={[tableRow, borderBottom, rowIndex === 0 ? borderTop : {}]} wrap={false}>
+                                    <View key={`body-${rowIndex}`} style={[tableRow, row.length ? borderBottom : {}, rowIndex === 0 ? borderTop : {}]} wrap={false}>
                                         {row.map((cell, cellIndex) => (
                                             <View key={`body-${rowIndex}-${cellIndex}`} style={[cellIndex === 0 ? borderLeft : {}, borderRight, colWidth[cellIndex]]}>
                                                 <Text style={cellPad}>{cell}</Text>
@@ -134,17 +122,7 @@ const Table: FC<Table> = ({
                                             </View>
                                         ))
                                     }
-                                    {/* {extraRowBottom && rowIndex === bodyItems.length - 1 &&
-                                        <View key={`extraBottom-${rowIndex}`} style={[tableRow, borderBottom, rowIndex + 1 === 0 ? borderTop : {}]} wrap={false}>
-                                            {extraRowBottom.map((row, extraRowIndex) => (
-                                                row?.content.map((cell, cellIndex) => (
-                                                    <View key={`extraBottom-${extraRowIndex}-${cellIndex}`} style={[cellIndex === 0 ? borderLeft : {}, borderRight, row.css[cellIndex]]}>
-                                                        <Text style={cellPad}>{cell}</Text>
-                                                    </View>
-                                                ))
-                                            ))}
-                                        </View>
-                                    } */}
+
                                 </View>
                             ))}
                         </View>

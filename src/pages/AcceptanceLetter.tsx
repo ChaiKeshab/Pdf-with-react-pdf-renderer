@@ -39,6 +39,11 @@ const AcceptanceLetter: FC = () => {
         "If you have received a Conditional Offer, you must provide documentary evidence of meeting the conditions of admission as outlined in this offer.",
     ];
 
+    const headCss = {
+        width: "16%",
+        fontWeight: "bold"
+    }
+
     return (
         <Page size="A4" style={page}>
             <Header />
@@ -55,7 +60,31 @@ const AcceptanceLetter: FC = () => {
                     issued until this agreement is signed and returned with receipt of payment.
                 </Text>
 
-                {/* Table required */}
+
+                <Table
+                    extraRowTop={[
+                        {
+                            content: ["Student ID:", ""],
+                            css: [headCss, { width: "84%" }]
+                        },
+                        {
+                            content: ["Family Name:", "XCXXX", "Given Name(s):", "XCXXX"],
+                            css: [headCss, { width: "34%" }, headCss, { width: "34%" }]
+                        },
+                        {
+                            content: ["Date Of Birth:", "XCXXX", "Country of Birth:", "XCXXX"],
+                            css: [headCss, { width: "34%" }, headCss, { width: "34%" }]
+                        },
+                        {
+                            content: ["Nationality:", "XCXXX", "Passport No.:", "XCXXX"],
+                            css: [headCss, { width: "34%" }, headCss, { width: "34%" }]
+                        },
+                        {
+                            content: ["Email:", "XCXXX", "Mobile:", "XCXXX"],
+                            css: [headCss, { width: "34%" }, headCss, { width: "34%" }]
+                        },
+                    ]}
+                />
 
                 <Text style={pMarginBtm}>I hereby accept the offer of admission as a fee-paying international student to undertake the following course/s I
                     have applied for at Velocity Education & Training.
@@ -78,16 +107,6 @@ const AcceptanceLetter: FC = () => {
                         { width: "14%" },
                         { width: "14%" }
                     ]}
-                    extraRowTop={[
-                        {
-                            content: ["Student ID:", "14425"],
-                            css: [{ width: "16%" }, { width: "84%" }]
-                        },
-                        {
-                            content: ["Student ID:", "14425"],
-                            css: [{ width: "16%" }, { width: "84%" }]
-                        }
-                    ]}
                 />
 
                 <Text style={subTitle}>Payment of fees and associated charges as follows:</Text>
@@ -100,10 +119,6 @@ const AcceptanceLetter: FC = () => {
                         { width: "50%" },
                     ]}
                     extraRowBottom={[
-                        {
-                            content: ["Conditions of Offer:", "lol"],
-                            css: [{ width: "20%" }, { width: "80%" }]
-                        },
                         {
                             content: ["Conditions of Offer:"],
                             css: [{ width: "100%" }]
