@@ -80,8 +80,12 @@ const AcceptanceLetter: FC = () => {
                     ]}
                     extraRowTop={[
                         {
-                            content: ["Student ID:"],
-                            css: [{ width: "16%" }]
+                            content: ["Student ID:", "14425"],
+                            css: [{ width: "16%" }, { width: "84%" }]
+                        },
+                        {
+                            content: ["Student ID:", "14425"],
+                            css: [{ width: "16%" }, { width: "84%" }]
                         }
                     ]}
                 />
